@@ -5,6 +5,7 @@ import comparable.SortTripletsCompaeable;
 import java.sql.Array;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.Function;
 
 public class SortTripletsComparator {
     int x,y,z;
@@ -34,5 +35,18 @@ class SampleComparator{
         for(int i=0;i< arr.length;i++){
             System.out.println(arr[i].x+"  "+arr[i].y+"  "+arr[i].z);
         }
+        
+
+
+        // returns half of it
+        Function<Integer, Double> half = a -> a / 2.0;
+        Function<Double, Double> next = a -> (double) (3 * a);
+
+        // Now triple the output of half function
+        half = half.andThen(next);
+
+        // Applying the function to get the result
+        // and printing on console
+        System.out.println(half.apply(10));
     }
 }
